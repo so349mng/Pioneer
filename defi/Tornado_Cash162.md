@@ -111,16 +111,17 @@ Tornado Cash池的一个关键原则是，用户的隐私性在很大程度上�
 
 #### Can Tornado Cash be removed or updated? If so, by whom?
 
-As stated previously, for most readers, *Tornado Cash* is synonymous with a core subset of the Tornado Cash smart contracts: the Tornado Cash pools. The vast majority of these contracts are immutable. That is, they have no ability to be updated or removed by anyone. A complete list of sanctioned, immutable Tornado Cash pools can be found in [Appendix A](https://www.coincenter.org/education/advanced-topics/how-does-tornado-cash-work/#appendixa).
+如前所述，对于大多数读者来说，Tornado Cash 是 Tornado Cash 智能合约核心子集的代名词：Tornado Cash 池。这些合同中的绝大多数是不可变的。也就是说，它们无法被任何人更新或删除。可以在附录 A 中找到经过批准的、不可变的 Tornado 现金池的完整列表。
 
-Note that many of these pools had, at one point, an “operator” role. The operator role was originally held by 0xDD4c…3384, aka *Gitcoin Grants: Tornado.cash*, another sanctioned address. This role afforded its holder two permissions:
+请注意，这些池中有许多曾一度扮演“运营者”角色。运营者角色最初由 0xDD4c…3384 担任，又名 Gitcoin Grants: Tornado.cash，这也是另一个受制裁的地址。该角色为其持有者提供了两个权限：
 
-- updateVerifier: Used to update the “verifier” used by the smart contract. In essence, this permission could be used to modify how the contract processed zero-knowledge proofs.
-- changeOperator: Used to transfer the “operator” permission to another address, or revoke the “operator” permission entirely by transferring it to the zero address.
+updateVerifier：用于更新智能合约使用的“验证者”。本质上，此权限可用于修改合约处理零知识证明的方式。
+changeOperator：用于将“operator”权限转移到另一个地址，或者通过将“operator”权限转移到零地址来完全撤销“operator”权限。
 
-In May 2020, the updateVerifier permission was used in conjunction with the changeOperator permission as a final update to these Tornado Cash pools. This updated all pools’ zero-knowledge proof processors to their final version, which incorporated the contributions of over 1,100 community participants. Additionally, this update revoked the “operator” permission by using changeOperator to transfer the permission to the zero address. In effect, the update performed in May 2020 cemented the community’s preferences, and ensured no further changes could be made. Details on this process can be found [here](https://tornado-cash.medium.com/tornado-cash-is-finally-trustless-a6e119c1d1c2).
+2020 年 5 月，在最终的更新中,updateVerifier 权限与 changeOperator 权限被结合使用。所有池的零知识证明的处理逻辑都被更新为最终版本，本次更新包含了 1,100 多名社区参与者的贡献。此外，此更新通过使用 changeOperator 将权限转移到零地址来,撤销了“运营者”权限。实际上，2020 年 5 月进行的更新固化了社区偏好，并确保不会不会再有更改。有关此过程的详细信息，请参见[此处](https://tornado-cash.medium.com/tornado-cash-is-finally-trustless-a6e119c1d1c2)。
 
-A handful of SDN-listed pools still have an “operator” permission. Of these, two belong to very old, now-unused versions of Tornado Cash. The remaining pools either have newer, immutable versions, or were used so little that they were likely overlooked during the May 2020 final update. Most of these remaining eight pools have never been used, and the ones that were used were only used once or twice within the past three years. A complete list of sanctioned, outdated Tornado Cash pools that retain the operator permission can be found in [Appendix C](https://www.coincenter.org/education/advanced-topics/how-does-tornado-cash-work/#appendixc).
+少数在 SDN 中列出的池仍然具有“操作员”权限。其中，两个属于非常古老、现在未使用的 Tornado Cash 版本。其余的池要么具有更新的、不可变的版本，要么使用得很少，以至于在 2020 年 5 月的最终更新期间很可能被忽略了。剩下的这八个池，大部分都没有被使用过，用过的也只是近三年才用过一两次而已。在[附录 C](https://www.coincenter.org/education/advanced-topics/how-does-tornado-cash-work/#appendixc).
+
 
 ### Tornado Cash Auxiliary Contracts & Controls
 
