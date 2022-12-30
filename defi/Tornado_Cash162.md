@@ -69,13 +69,15 @@ Tornado Cash池的一个关键原则是，用户的隐私性在很大程度上�
 
 #### Zero-Knowledge Proofs
 
-To recall an earlier point, Ethereum is transparent: anyone can view the transaction history and balance of any user account. Likewise, anyone can view the interaction history, balance, and code of a smart contract application. If a user prompts a smart contract to perform an operation, this interaction becomes a fact that is forever recorded in Ethereum’s public records and can be recalled and inspected by anyone. So how is it that a user can deposit into a Tornado Cash pool and later withdraw to a different address without creating an obvious link to anyone observing Ethereum’s public records?
+回顾以下，以太坊是透明的账簿：任何人都可以查看任何账户的交易历史和余额。同样，任何人都可以查看智能合约的交互历史、余额和代码。如果用户调用智能合约执行操作，则这个调用交互将永远记录在以太坊的公共记录中，任何人都可以调用和检查此调用。那么，用户如何能够做到存款到 Tornado Cash池，然后提取到不同的地址, 但是对任何观察以太坊记录的人, 存款和取款过程却没有明显的联系呢？
 
-The answer lies in *zero-knowledge proofs*. A zero-knowledge proof is a cryptographic method by which one party (the “prover”) can prove to another party (the “verifier”) that a given statement is true without the prover conveying any additional information apart from the fact that the statement is indeed true.
+答案在于*零知识证明*。零知识证明是一种密码学方法，通过这种方法，一方（“证明者”）可以向另一方（“验证者”）证明给定的陈述是真实的，而无需证明者传达任何附加信息.
+
 
 ![2.png](https://img.learnblockchain.cn/attachments/2022/09/lhWvSUke63184e78d0115.png)
 
-In the case of Tornado Cash, the “prover” is the user withdrawing tokens from the pool, while the “verifier” is one of the Tornado Cash pool contracts. When a user prompts the pool smart contract to withdraw their tokens, the user must supply the prompt with a zero-knowledge proof. The pool’s code automatically checks the input proof, only processing a withdrawal if the proof is found to be valid. Exactly what statement is being proven by the user and how they create that proof is slightly more complicated, and requires a bit more detail on the deposit process.
+在 Tornado Cash 的情况下，“证明者”是从池中提取代币的用户，而“验证者”则是 Tornado Cash 池合约之一。当用户调用池智能合约,以提取他们的代币时，用户必须提供带有零知识证明的提示。池的代码会自动检查输入证明，只有在证明有效时才会处理提款。用户的证明本身以及他们如何创建证明的过程会稍微复杂一些，理解它需要更多关于存款过程的细节。
+
 
 #### Pool Deposit Process
 
