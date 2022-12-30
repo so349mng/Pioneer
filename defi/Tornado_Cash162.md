@@ -83,29 +83,31 @@ Tornado Cash池的一个关键原则是，用户的隐私性在很大程度上�
 
 ![3.png](https://img.learnblockchain.cn/attachments/2022/09/GwEnTYzn63184e7d089bb.png)
 
-When a user wants to deposit tokens, they first generate a “deposit note” (a long sequence of digits known only to the user). This is done privately on the user’s own computer, and is never shared publicly. Next, the user prompts the Tornado Cash pool contract to process the deposit. Along with this prompt, the user supplies a hash (or encoded form) of their deposit note and the tokens for deposit. The pool smart contract automatically records the encoded note as a new entry in a public list of other users’ encoded notes. At this point, the depositing user has completed the first part of the process, and retains the deposit note, which acts as a receipt to withdraw the tokens later.
+当用户想要存入代币时，他们首先会生成一张“存款单”（一长串只有用户知道的数字）。这是在用户自己的计算机上私下完成的，绝不会公开共享。接下来，用户指示 Tornado Cash 池合约处理存款。连同此存款指示，用户提供其存款单的哈希值（或编码形式）和存款代币。池智能合约自动将编码过的存款单,记录为一个公共存款单列表中的新条目。至此，存款用户已经完成了第一部分流程，用户保留存款单，作为后续提取代币的收据。
+
 
 #### Pool Withdrawal Process
 
 ![4.png](https://img.learnblockchain.cn/attachments/2022/09/0u9Zwkjj63184e80a8d42.png)
 
-When a user is ready to withdraw their tokens, they first split their deposit note in half. One side acts like a “secret,” and the other acts like a “lock.” After that, the user prompts the Tornado Cash smart contract to withdraw. Along with the prompt, the user supplies:
+当用户准备提取代币时，他们首先将存款单分成两半。一半充当“秘密值”，另一半充当“锁”。之后，用户指示 Tornado Cash 智能合约进行提现。 为了取款,用户需要提供：
 
-- A *hash* (or encoded form) of the “lock”
-- A *zero-knowledge proof*, generated using the “secret” and the “lock”
+- “锁”的*哈希值*（或编码）
+- *零知识证明*，使用“秘密值”和“锁”生成
 
-The pool smart contract uses these inputs to automatically verify – that is, *prove* – the following:
+池智能合约使用这些输入来自动验证——即*证明*——以下内容：
 
-1. That the zero-knowledge proof was generated using the “secret.” It is the exact same “secret” that corresponds to one of the existing encoded notes in the pool’s public list of encoded notes (*i.e.* proving that the tokens being withdrawn were previously deposited by someone)*.*
-2. That the same proof also corresponds to the encoded form of the “lock” supplied with the proof (*i.e.* proving that the person who is withdrawing them must be the same person who deposited them)*.*
-3. That the submitted “lock” has not been submitted previously (*i.e.* the deposit in question has not already been withdrawn)*.*
+1. 零知识证明是使用“秘密值”生成的。它与池的公开存款单列表中的某个存款单拥有完全相同的“秘密”（*即*证明被提取的代币之前由某人存入）*.*
+2. 相同的证明也对应于特定的“锁”的编码（*即*证明提取它们的人必须是存入它们的同一个人）*.*
+3. 提交的“锁”之前没有提交过（*即*待取的存款还没有被提取）*.*
 
-Assuming the proof is verified, the pool smart contract automatically:
+假设证明得到验证，池智能合约会自动：
 
-1. Sends the user their tokens.
-2. Records the encoded “lock” in a public list of other users’ encoded locks, ensuring the same tokens cannot be withdrawn again.
+1. 向用户发送他们的代币。
+2. 将编码后的“锁”记录在锁的公开列表中，确保相同的代币不能被再次提取。
 
-Crucially, the above operations are carried out while the following is never revealed: which specific encoded note the proof corresponds to (*i.e.* who, among all of Tornado Cash’s depositors, is now withdrawing).
+至关重要的是，上述操作在执行中, 不会透露以下内容： 证明对应于哪个特定编码的票据（*即*在 Tornado Cash 的所有存款人中，谁现在正在取款）。
+
 
 #### Can Tornado Cash be removed or updated? If so, by whom?
 
